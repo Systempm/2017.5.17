@@ -10,3 +10,12 @@
    2、在64系统里执行32位程序如果出现/lib/ld-linux.so.2: bad ELF interpreter: No such file or directory，安装下glic即可
    
    sudo yum install glibc.i686
+
+
+3、(-bash: jps: command not found)问题
+
+vim /root/.bash_profile 
+
+  在 PATH 中 添加 JDK 的环境变量     如  /usr/java/jdk1.6.0_26/bin
+   
+   source /root/.bash_profile
