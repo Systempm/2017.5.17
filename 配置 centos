@@ -1,0 +1,12 @@
+ 1  把 用户 加入到 sudoer 内 
+ 
+ .编辑/etc/sudoers
+   $vi /etc/sudoers
+ 在root    ALL=(ALL:ALL) ALL 下面添加一行
+   jack    ALL=(ALL)ALL
+   然后保存退出。
+   
+   
+   2、在64系统里执行32位程序如果出现/lib/ld-linux.so.2: bad ELF interpreter: No such file or directory，安装下glic即可
+   
+   sudo yum install glibc.i686
