@@ -1,0 +1,29 @@
+ 配置完了 虚拟机 网络环境  让虚拟机可以上网了 
+ 
+ 
+ 先对宿主机（windows机器,我这里是win7系统）进行相关配置。
+查看宿主机的网络信息，先将VMnet1那张网卡设置为自动获得ip，再将主机上连接互联网的那张网卡共享给VMnet1。
+wonderful 
+
+共享之后，再去查看VMnet1网卡，被设置成了默认的ip（192.168.137.1）了，如果不想使用该ip，可以修改它，在这里我把它修改成了192.168.1.12 在windows上的设置基本就完成了，接下来是对linux虚拟机进行设置。 
+
+虚拟机配置的方法 
+
+虚拟机使用host-only模式。
+设置linux系统ip，修改/etc/sysconfig/network-scripts/ifcfg-eth0 文件
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
+设置GATEWAY为192.168.1.1（设置网关）
+设置nameserver
+修改/etc/resolv.conf文件 
+
+vi /etc/resolv.conf 
+
+添加nameserver 192.168.1.1 
+
+修改完毕之后，在root用户下，执行下列命令： 
+
+service network restart 
+
+配置基本上完成了，来看下是否能连接互联网，可以ping通www.luyouqiwang.com，说明配置成功了
+
+          需要把 win10 的防火墙 入站 ipv4 打开 
